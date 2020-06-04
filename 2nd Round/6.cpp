@@ -1,3 +1,12 @@
+/*
+Input:7
+2
+1101011
+Output:
+110010110
+*/
+
+
 #include <iostream>
 using namespace std;
 int main()
