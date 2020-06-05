@@ -1,12 +1,8 @@
 /*
-A number is called as binary-decimal if all the digits in the number should be either ‘1’ or ‘0’. 
-Any number can be written as a sum of binary-decimals. 
-Our task is to find the minimum number of binary-decimals to represent a number.
-Input : 32
-Output : 10 11 11
-
-Input : 120
-Output : 10 110
+You’re given a number n. 
+If write all the numbers from 1 to n in a paper, we have to find the number of characters written on the paper.
+For example if n=13, the output should be 17
+if n = 101, the output should be 195
 */
 #include <iostream>
 using namespace std;
