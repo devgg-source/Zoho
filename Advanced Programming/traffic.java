@@ -37,47 +37,60 @@ class data {
 
 }
 
-class print {
-    void print() {
-        System.out.println("Landing is approved for ");
-    }
-}
+// class print {
+// void print() {
+// System.out.println("Landing is approved for ");
+// }
+// }
 
 class MultithreadingDemo implements Runnable {
-    int runArr[] = new int[] { 0, 0, 0, 0 };
+
     int m;
     data r = new data();
+    double k;
+    String flight;
 
-    MultithreadingDemo(double k) {
+    MultithreadingDemo(double k, String flight, int[] runArr) {
+        try {
+            if (r.runway.get("Runway1") >= k && runArr[0] != 1) {
+                m = 0;
+                runArr[0] = 1;
+                Thread.sleep((int) k * 1000);
+                runArr[0] = 0;
+            } else if (r.runway.get("Runway2") >= k && runArr[1] != 1) {
+                m = 1;
+                runArr[1] = 1;
+                Thread.sleep((int) k * 1000);
+                runArr[1] = 0;
+            } else if (r.runway.get("Runway3") >= k && runArr[2] != 1) {
+                m = 1;
+                runArr[2] = 1;
+                Thread.sleep((int) k * 1000);
+                runArr[2] = 0;
+            } else if (r.runway.get("Runway4") >= k && runArr[3] != 1) {
+                m = 2;
+                runArr[3] = 1;
+                Thread.sleep((int) k * 1000);
+                runArr[3] = 0;
+            }
 
-        if (r.runway.get("Runway1") >= k && runArr[0] != 1) {
-            m = 0;
-            runArr[0] = 1;
-            Thread.sleep((int) k * 1000);
-            runArr[0] = 0;
-        } else if (r.runway.get("Runway2") >= k && runArr[1] != 1) {
-            m = 1;
-            runArr[1] = 1;
-            Thread.sleep((int) k * 1000);
-            runArr[1] = 0;
-        } else if (r.runway.get("Runway3") >= k && runArr[2] != 1) {
-            m = 1;
-            runArr[2] = 1;
-            Thread.sleep((int) k * 1000);
-            runArr[2] = 0;
-        } else if (r.runway.get("Runway4") >= k && runArr[3] != 1) {
-            m = 2;
-            runArr[3] = 1;
-            Thread.sleep((int) k * 1000);
-            runArr[3] = 0;
+        } catch (InterruptedException e) {
+            System.out.print(e);
         }
+    }
 
+    public void run() {
+        System.out.println("Landing approved for " + flight + " with " + "Runway" + (m + 1));
+        System.out.println("Touch down will happen in 15sec");
+        System.out.println("The plane will stop ater " + (int) k + "secs of touchdown");
+        System.out.println("Runway" + (m + 1) + "will be ready for next req in" + k + "sec");
     }
 
 }
 
 class exper extends data {
     Scanner sc = new Scanner(System.in);
+    int[] runArr = { 0, 0, 0, 0 };
 
     double cal(int m, int d) {
         if (m == 1) {
@@ -109,10 +122,9 @@ class exper extends data {
         int m = sc.nextInt();
         int s = v.tim(flight);
         double j = cal(m, s);
-        System.out.println((int) j);
-        MultithreadingDemo t = new MultithreadingDemo(j);
-        t.start();
-        // int k = t.m;
+        // System.out.println((int) j);
+        MultithreadingDemo t = new MultithreadingDemo(j, flight, runArr);
+        new Thread(t).start();
 
     }
 }
