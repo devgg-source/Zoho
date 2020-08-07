@@ -1,4 +1,5 @@
 /*
+
 1.	Print the word with odd letters as
 
 P         M
@@ -8,6 +9,7 @@ P         M
   O    R
  R       A
 P          M 
+
 
 */
 
