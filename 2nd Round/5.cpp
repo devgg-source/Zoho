@@ -1,5 +1,7 @@
 /*
+
 You’re given an even number n. 
+
 If n=4, you have to print the following pattern :
 4444
 4334
