@@ -20,7 +20,7 @@ int main()
         if (a[i] > k)
         {
             k = a[i];
-            cout << k << " ";
+            cout << k << "  ";
         }
     }
     return 0;
