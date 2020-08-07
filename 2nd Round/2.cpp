@@ -1,11 +1,14 @@
 /*
+
 input:
 N=4
+
 output:
 1 5 8 10 
 2 6 9 
 3 7 
 4 
+
 */
 
 #include <iostream>
